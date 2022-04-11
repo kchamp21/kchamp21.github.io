@@ -1,0 +1,42 @@
+// =Brand
+.brand {
+    // colors
+    --brand-color: var(--palette-black);
+    --brand-hover-color: var(--palette-black);
+
+    // params
+    --brand-font-size: 16px;
+    --brand-font-weight: bold;
+    --brand-text-transform: none;
+    --brand-letter-spacing: 0;
+
+    // props
+    position: relative;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--brand-color);
+    font-size: var(--brand-font-size);
+    font-weight: var(--brand-font-weight);
+    text-transform: var(--brand-text-transform);
+    letter-spacing: var(--brand-letter-spacing);
+
+    svg {
+        fill: currentColor;
+    }
+}
+a.brand:hover {
+    @include transition;
+    color: var(--brand-hover-color);
+    text-decoration: underline;
+}
+
+// Dark theme
+@include dark-theme {
+    .brand {
+        --brand-color: var(--palette-white-90);
+        --brand-hover-color: var(--palette-white-90);
+    }
+}

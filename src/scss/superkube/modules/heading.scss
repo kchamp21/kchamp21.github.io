@@ -1,0 +1,73 @@
+// =Heading
+.heading-tagline {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.heading-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+.heading-normal {
+    font-weight: normal;
+}
+.heading-heavy {
+    font-weight: var(--font-weight-heavy);
+}
+
+[class^="heading-"],
+[class*=" heading-"] {
+    --heading-color: var(--heading-default);
+    --heading-font-size: inherit;
+    --heading-line-height: inherit;
+
+    // props
+    font-size: var(--heading-font-size);
+    line-height: var(--heading-line-height);
+    color: var(--heading-color);
+}
+[class^="heading-gradient"],
+[class*=" heading-gradient"] {
+    display: inline-block;
+    background-clip: text;
+    background-color: #000;
+    background-image: var(--heading-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    a,
+    a:hover {
+        opacity: 1;
+    }
+}
+
+// Size
+.heading { @include generate-heading-size(scale(type), std); }
+@include for-lg { .heading { @include generate-heading-size(scale(type-lg), lg); }}
+@include for-md { .heading { @include generate-heading-size(scale(type-md), md); }}
+@include for-sm { .heading { @include generate-heading-size(scale(type-sm), sm); }}
+
+// Color
+$heading-colors: map-get($colors, heading);
+@each $name, $value in $heading-colors {
+    $sel: '.heading';
+    @if $name != default {
+        $sel: '.heading-' + $name;
+    }
+
+    #{$sel} {
+        --heading-color: #{$value};
+    }
+}
+// Dark theme
+@include dark-theme {
+    $heading-colors: map-get($colors-dark, heading);
+    @each $name, $value in $heading-colors {
+        $sel: '.heading';
+        @if $name != default {
+            $sel: '.heading-' + $name;
+        }
+
+        #{$sel} {
+            --heading-color: #{$value};
+        }
+    }
+}

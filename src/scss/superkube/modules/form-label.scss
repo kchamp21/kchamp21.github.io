@@ -1,0 +1,40 @@
+// =Form-Label
+label {
+    // colors
+    --form-label-color: var(--text-default);
+    --form-background-color: transparent;
+
+    // params
+    --form-label-font-size: 15px;
+    --form-label-line-height: var(--body-text-line);
+    --form-label-font-weight: normal;
+    --form-label-font-style: normal;
+    --form-label-text-transform: none;
+    --form-label-letter-spacing: 0;
+    --form-label-space: 0.15em;
+    --form-label-border-radius: 0;
+    --form-label-padding: 0;
+
+    // props
+    display: block;
+    font-size: var(--form-label-font-size);
+    font-weight: var(--form-label-font-weight);
+    font-style: var(--form-label-font-style);
+    line-height: var(--form-label-line-height);
+    text-transform: var(--form-label-text-transform);
+    letter-spacing: var(--form-label-letter-spacing);
+    margin-bottom: var(--form-label-space);
+    border-radius: var(--form-label-border-radius);
+    padding: var(--form-padding);
+    color: var(--form-label-color);
+    background-color: var(--form-label-background-color);
+}
+.label-light {
+    --form-label-color: var(--text-light);
+}
+// Dark theme
+@include dark-theme {
+    label {
+
+    }
+}
