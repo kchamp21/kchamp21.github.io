@@ -1,0 +1,109 @@
+// =Link
+.link-stretched {
+    @include stretched;
+}
+.link-strong {
+    font-weight: bold;
+}
+.link-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+.link-italic {
+    font-style: italic;
+}
+.link-block {
+    display: block;
+}
+.link-underline {
+    text-decoration: underline;
+}
+.link-underline-off {
+    text-decoration: none !important;
+}
+.link-ghost {
+    text-decoration: none;
+}
+.link-ghost:hover {
+    text-decoration: underline;
+}
+.link-icon,
+.link-caret {
+    display: flex;
+    align-items: center;
+}
+.link-icon {
+    // params
+    --link-icon-space: 4px;
+
+    // props
+    gap: var(--link-icon-space);
+}
+
+$link-size: scale(type, text);
+[class^="link-"],
+[class*=" link-"] {
+    // colors
+    --link-color: var(--link-default-color);
+    --link-hover-color: var(--link-default-hover-color);
+    --link-border-color: transparent;
+    --link-hover-border-color: transparent;
+    --link-background-color: transparent;
+    --link-hover-background-color: transparent;
+
+    // params
+    --link-border-width: 1px;
+    --link-border-style: solid;
+
+    // props
+    color: var(--link-color);
+    background-color: var(--link-background-color);
+    border-color: var(--link-border-color);
+    border-style: var(--link-border-style);
+    border-width: var(--link-border-width);
+    &:hover {
+        color: var(--link-hover-color);
+        background-color: var(--link-hover-background-color);
+        border-color: var(--link-hover-border-color);
+    }
+}
+// Size
+.link {
+    @each $name, $value in $link-size {
+        @if $name != default {
+            &-#{$name} {
+                font-size: nth($value, 1);
+            }
+        }
+    }
+}
+
+// Color
+$link-colors: map-get($colors, link);
+@each $name, $map in $link-colors {
+    $sel: '.link';
+    @if $name != default {
+        $sel: '.link-' + $name;
+    }
+
+    #{$sel} {
+        @each $key, $value in $map {
+            --link-#{$key}: #{$value};
+        }
+    }
+}
+// Dark theme
+@include dark-theme {
+    $link-colors: map-get($colors-dark, link);
+    @each $name, $map in $link-colors {
+        $sel: '.link';
+        @if $name != default {
+            $sel: '.link-' + $name;
+        }
+
+        #{$sel} {
+            @each $key, $value in $map {
+                --link-#{$key}: #{$value};
+            }
+        }
+    }
+}

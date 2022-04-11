@@ -1,0 +1,64 @@
+// =Icon
+.icon {
+    --icon-size: 1em;
+    --icon-color: currentColor;
+
+    display: inline-block;
+
+    & svg {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+.icon-text {
+    --icon-size: 1em;
+    --icon-color: currentColor;
+
+    display: inline-flex;
+    align-self: center;
+    position: relative;
+    top: .125em;
+}
+.icon,
+.icon-text {
+    & svg {
+        fill: var(--icon-color);
+        height: var(--icon-size);
+        width: var(--icon-size);
+    }
+}
+
+// Colors
+$iconcolors: map-get($colors, icon);
+@each $name, $value in $iconcolors {
+    .icon-#{$name},
+    a.icon-#{$name} {
+        --icon-color: #{$value};
+    }
+}
+
+// Size
+$icons: scale(icon);
+@each $key, $size in $icons {
+    .icon-#{$key} {
+        --icon-size: #{$size};
+    }
+}
+@include for-sm {
+    @each $key, $size in $icons {
+        .icon-#{$key}-sm {
+            --icon-size: #{$size};
+        }
+    }
+}
+
+// Dark theme
+@include dark-theme {
+    $iconcolors: map-get($colors-dark, icon);
+    @each $name, $value in $iconcolors {
+        .icon-#{$name},
+        a.icon-#{$name} {
+            --icon-color: #{$value};
+        }
+    }
+}

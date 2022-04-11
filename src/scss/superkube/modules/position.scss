@@ -1,0 +1,27 @@
+// =Position
+.position-relative,
+.position-base {
+    position: relative;
+}
+.position-under,
+.position-over {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+
+    & > * {
+        pointer-events: all;
+    }
+}
+.position-under {
+    z-index: 1;
+}
+.position-base {
+    z-index: 2;
+}
+.position-over {
+    z-index: 3;
+}

@@ -1,0 +1,123 @@
+// generate root vars
+@mixin generate-root-vars {
+    @each $name in $global-scales {
+        $map: scale($name);
+        @each $key, $val in $map {
+            --#{$name}-#{$key}: #{$val};
+        }
+    }
+}
+
+// generate root palette
+@mixin generate-root-palette($map) {
+    @if $map != null {
+        @each $name, $value in $map {
+            @if type-of($value) == map {
+                @each $key, $color in $value {
+                    --palette-#{$name}-#{$key}: #{$color};
+                }
+            }
+            @else {
+                --palette-#{$name}: #{$value};
+            }
+        }
+
+        // opacity
+        @each $name in $opacity-colors {
+            $color: map-get($map, $name);
+            @if type-of($color) == map {
+                    $color: map-get($color, base);
+            }
+            @if $color != null {
+                @each $index in $opacity-scale {
+                    --palette-#{$name}-#{$index}: #{rgba($color, $index/100)};
+                }
+            }
+        }
+    }
+}
+
+// generate root colors
+@mixin generate-root-colors($map) {
+    @if $map != null {
+        @each $name, $value in $map {
+            @if $name != shadow {
+                @each $key, $val in $value {
+                    @if type-of($val) == map {
+                        @each $n, $i in $val {
+                            --#{$name}-#{$key}-#{$n}: #{$i};
+                        }
+                    }
+                    @else {
+                        --#{$name}-#{"" + $key}: #{$val};
+                    }
+                }
+            }
+        }
+
+        // shadows
+        $shadows: map-get($map, shadow);
+        @each $key, $val in $shadows {
+            @if type-of($val) == map {
+                --shadow-#{$key}: #{map-values($val)};
+            }
+            @else {
+                --shadow-#{$key}: #{$val};
+            }
+        }
+    }
+}
+
+// base headings
+@mixin generate-base-headings($map, $breakpoint) {
+    @if map-has-key($map, base) {
+        $headings: h1, h2, h3, h4, h5, h6;
+        $obj: map-deep-get($map, base);
+        @each $key, $val in $headings {
+            @if map-has-key($obj, $key) {
+                #{$key} {
+                    --heading-font-size: #{type-size(base, $key, $breakpoint)};
+                    --heading-line-height: #{type-line(base, $key, $breakpoint)};
+                }
+            }
+        }
+    }
+}
+
+// text size
+@mixin generate-text-size($map, $breakpoint) {
+    $obj: map-get($map, text);
+    @each $key, $val in $obj {
+        @if (type-of($val) == 'list') {
+            &-#{$key} {
+                --text-font-size: #{type-size(text, $key, $breakpoint)};
+                --text-line-height: #{type-line(text, $key, $breakpoint)};
+            }
+            @if (length($val) == 3) {
+                &-#{$key}-alt {
+                    --text-font-size: #{type-size(text, $key, $breakpoint)};
+                    --text-line-height: #{type-line-alt(text, $key, $breakpoint)};
+                }
+            }
+        }
+    }
+}
+
+// heading size
+@mixin generate-heading-size($map, $breakpoint) {
+    $obj: map-get($map, heading);
+    @each $key, $val in $obj {
+        @if (type-of($val) == 'list') {
+            &-#{$key} {
+                --heading-font-size: #{type-size(heading, $key, $breakpoint)};
+                --heading-line-height: #{type-line(heading, $key, $breakpoint)};
+            }
+            @if (length($val) == 3) {
+                &-#{$key}-alt {
+                    --heading-font-size: #{type-size(heading, $key, $breakpoint)};
+                    --heading-line-height: #{type-line-alt(heading, $key, $breakpoint)};
+                }
+            }
+        }
+    }
+}

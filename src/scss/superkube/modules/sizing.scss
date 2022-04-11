@@ -1,0 +1,37 @@
+// =Sizing
+$sizing-scale: scale(sizing);
+@each $name, $value in $sizing-scale {
+    .max-#{$name} {
+        width: $value;
+        min-width: $value;
+        max-width: $value;
+    }
+    .h-#{$name} {
+        height: $value;
+    }
+}
+
+// Helpers
+.max-off {
+    max-width: none;
+    min-width: none;
+    width: auto;
+}
+.h-off {
+    height: auto;
+}
+.vh-full {
+    min-height: 100vh;
+}
+
+// Responsive
+@include for-sm {
+    .max-auto-sm {
+        max-width: none;
+        min-width: none;
+        width: auto;
+    }
+    .h-auto-sm {
+        height: auto;
+    }
+}

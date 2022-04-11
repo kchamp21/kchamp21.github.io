@@ -1,0 +1,34 @@
+// =Close
+.close {
+    --close-color: currentColor;
+    --close-size: 14px;
+    --close-thickness: 1px;
+
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    width: var(--close-size);
+    height: var(--close-size);
+    opacity: 0.65;
+
+    &:before,
+    &:after {
+        position: absolute;
+        content: '';
+        top: calc((var(--close-size) - var(--close-thickness)) / 2);
+        left: 0;
+        right: 0;
+        height: var(--close-thickness);
+        background: var(--close-color);
+        border-radius: var(--close-thickness);
+    }
+    &:before {
+        transform: rotate(45deg);
+    }
+    &:after {
+        transform: rotate(-45deg);
+    }
+    &:hover {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,38 @@
+//=CheckboxRadio
+.checkbox,
+.radio {
+    // colors
+    --checkbox-radio-color: var(--text-default);
+
+    // params
+    --checkbox-radio-font-size: 15px;
+    --checkbox-radio-font-weight: normal;
+    --checkbox-radio-font-style: normal;
+    --checkbox-radio-text-transform: none;
+    --checkbox-radio-line-height: var(--body-text-line);
+    --checkbox-radio-letter-spacing: 0;
+    --checkbox-radio-space: 1rem;
+
+    // props
+    font-size: var(--checkbox-radio-font-size);
+    font-weight: var(--checkbox-radio-font-weight);
+    font-style: var(--checkbox-radio-font-style);
+    line-height: var(--checkbox-radio-line-height);
+    text-transform: var(--checkbox-radio-text-transform);
+    letter-spacing: var(--checkbox-radio-letter-spacing);
+    color: var(--checkbox-radio-color);
+    cursor: pointer;
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+    & + .checkbox,
+    & + .radio {
+        margin-top: var(--checkbox-radio-space);
+    }
+}
+.checkbox-light,
+.radio-light {
+    --checkbox-radio-color: var(--text-light);
+}

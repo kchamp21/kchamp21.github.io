@@ -1,0 +1,84 @@
+// =Text
+.text-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+.text-strong {
+    font-weight: bold;
+}
+.text-italic {
+    font-style: italic;
+}
+.text-mono {
+    font-family: var(--font-mono);
+}
+.text-caps {
+    text-transform: uppercase;
+    letter-spacing: .035em;
+}
+.text-nowrap {
+    &,
+    & td,
+    & th {
+        white-space: nowrap;
+    }
+}
+
+[class^="text-"],
+[class*=" text-"] {
+    --text-color: var(--text-default);
+    --text-font-size: inherit;
+    --text-line-height: inherit;
+
+    // props
+    font-size: var(--text-font-size);
+    line-height: var(--text-line-height);
+    color: var(--text-color);
+}
+[class^="text-gradient"],
+[class*=" text-gradient"] {
+    display: inline-block;
+    background-clip: text;
+    background-color: #000;
+    background-image: var(--text-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    a,
+    a:hover {
+        opacity: 1;
+    }
+}
+
+// Size
+.text { @include generate-text-size(scale(type), std); }
+@include for-lg { .text { @include generate-text-size(scale(type-lg), lg); }}
+@include for-md { .text { @include generate-text-size(scale(type-md), md); }}
+@include for-sm { .text { @include generate-text-size(scale(type-sm), sm); }}
+
+
+// Color
+$text-colors: map-get($colors, text);
+@each $name, $value in $text-colors {
+    $sel: '.text';
+    @if $name != default {
+        $sel: '.text-' + $name;
+    }
+
+    #{$sel} {
+        --text-color: #{$value};
+    }
+}
+// Dark theme
+@include dark-theme {
+    $text-colors: map-get($colors-dark, text);
+    @each $name, $value in $text-colors {
+        $sel: '.text';
+        @if $name != default {
+            $sel: '.text-' + $name;
+        }
+
+        #{$sel} {
+            --text-color: #{$value};
+        }
+    }
+}
