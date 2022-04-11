@@ -1,0 +1,69 @@
+// =Image
+.image-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    img {
+        flex-shrink: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
+}
+.image-overlay {
+    --image-overlay-color: transparent;
+    --image-overlay-opacity: 1;
+
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: var(--image-overlay-color);
+        opacity: var(--image-overlay-opacity);
+    }
+}
+
+// Overlays
+$overlays: map-get($colors, overlay);
+@each $name, $value in $overlays {
+    .image-overlay-#{$name} {
+        @if type-of($value) == map {
+            --image-overlay-color:  #{map-get($value, color)};
+            --image-overlay-opacity: #{map-get($value, opacity)};
+        }
+        @else {
+            --image-overlay-color: #{$value};
+        }
+    }
+}
+
+// Size
+$images: scale(image);
+@each $key, $value in $images {
+    .image-#{$key} {
+        width: $value;
+        height: $value;
+    }
+}
+
+// Dark theme
+@include dark-theme {
+    $overlays: map-get($colors-dark, overlay);
+    @each $name, $value in $overlays {
+        .image-overlay-#{$name} {
+            @if type-of($value) == map {
+                --image-overlay-color:  #{map-get($value, color)};
+                --image-overlay-opacity: #{map-get($value, opacity)};
+            }
+            @else {
+                --image-overlay-color: #{$value};
+            }
+        }
+    }
+}

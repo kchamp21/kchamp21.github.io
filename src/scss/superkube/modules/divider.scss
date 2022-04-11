@@ -1,0 +1,80 @@
+// =Divider
+.divider,
+hr {
+    // colors
+    --divider-color: var(--divider-default);
+
+    // params
+    --divider-space: 1.5em;
+    --divider-size: 1px;
+    --divider-length: auto;
+    --divider-style: solid;
+
+    // props
+    position: relative;
+    line-height: 1;
+    background: none;
+    border: none;
+    text-align: left;
+
+    width: var(--divider-length);
+    height: var(--divider-size);
+
+    border-top-width: var(--divider-size);
+    border-top-style: var(--divider-style);
+    border-top-color: var(--divider-color);
+}
+hr {
+    margin-top: var(--divider-space);
+    margin-bottom: var(--divider-space);
+}
+.divider-vertical {
+    border-top: none;
+    width: var(--divider-size);
+    height: var(--divider-length);
+    border-left-width: var(--divider-size);
+    border-left-style: var(--divider-style);
+    border-left-color: var(--divider-color);
+}
+.divider-dashed {
+    --divider-style: dashed;
+}
+.divider-dotted {
+    --divider-style: dotted;
+}
+
+// Size
+$divider-scale: scale(divider);
+@each $name, $value in $divider-scale {
+    @if $name != 1 {
+        .divider-#{$name} {
+            --divider-size: #{$value};
+        }
+    }
+}
+
+// Length
+$divider-length: scale(divider-length);
+@each $name, $value in $divider-length {
+    .divider-#{$name} {
+        --divider-length: #{$value};
+    }
+}
+
+// Colors
+$dividercolors: map-get($colors, divider);
+@each $name, $value in $dividercolors {
+    .divider-#{$name} {
+        --divider-color: #{$value};
+    }
+
+}
+// Dark theme
+@include dark-theme {
+    $dividercolors: map-get($colors-dark, divider);
+    @each $name, $value in $dividercolors {
+        .divider-#{$name} {
+            --divider-color: #{$value};
+        }
+    }
+}

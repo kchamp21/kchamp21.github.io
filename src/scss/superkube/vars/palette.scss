@@ -1,0 +1,104 @@
+// =Palette
+$palette: map-extend($palette, (
+    black: #030612,
+    white: #ffffff,
+    primary: (
+        darker: #1022A0,
+        dark: #1027EA,
+        base: #1F4AFB,
+        mid: #8FA4FD,
+        light: #C7D2FE,
+        lighter: #E8ECFE,
+        lightest: #F4F6FF
+    ),
+    neutral: (
+        darker: #2A2D3C,
+        dark: #3F424A,
+        base: #7C7C83,
+        mid: #CDCDD0,
+        light: #E6E6E9,
+        lighter: #EDEDEE,
+        lightest: #F5F5F6
+    ),
+    negative: (
+        darker: #A30109,
+        dark: #E6000A,
+        base: #FF424D,
+        mid: #FFA0A6,
+        light: #FFC6C9,
+        lighter: #FFECED,
+        lightest: #FFF5F6
+    ),
+    positive: (
+        darker: #106939,
+        dark: #1B9D56,
+        base: #1FC267,
+        mid: #84DEAC,
+        light: #B1EACA,
+        lighter: #E8F8EF,
+        lightest: #F4FCF7
+    ),
+    active: (
+        darker: #1022A0,
+        dark: #1027EA,
+        base: #1F4AFB,
+        mid: #8FA4FD,
+        light: #C7D2FE,
+        lighter: #E8ECFE,
+        lightest: #F4F6FF
+    ),
+    red: (
+        darker: #A30109,
+        dark: #E6000A,
+        base: #FF424D,
+        mid: #FFA0A6,
+        light: #FFC6C9,
+        lighter: #FFECED,
+        lightest: #FFF5F6
+    ),
+    orange: (
+        darker: #B84300,
+        dark: #FF6105,
+        base: #FF8943,
+        mid: #FFBE98,
+        light: #FFD6BD,
+        lighter: #FFF3EC,
+        lightest: #FFF9F5
+    ),
+    yellow: (
+        darker: #9F7E04,
+        dark: #ECC01E,
+        base: #F9C918,
+        mid: #FBDF74,
+        light: #FDE9A3,
+        lighter: #FEF7DD,
+        lightest: #FEFCF3
+    ),
+    green: (
+        darker: #106939,
+        dark: #1B9D56,
+        base: #1FC267,
+        mid: #84DEAC,
+        light: #B1EACA,
+        lighter: #E8F8EF,
+        lightest: #F4FCF7
+    ),
+    blue: (
+        darker: #1022A0,
+        dark: #1027EA,
+        base: #1F4AFB,
+        mid: #8FA4FD,
+        light: #C7D2FE,
+        lighter: #E8ECFE,
+        lightest: #F4F6FF
+    ),
+    purple: (
+        darker: #5622A5,
+        dark: #6E25D5,
+        base: #8C38FF,
+        mid: #C59BFF,
+        light: #E2CDFF,
+        lighter: #F6EFFF,
+        lightest: #F9F5FF
+    )
+));

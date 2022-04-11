@@ -1,0 +1,73 @@
+// =Breadcrumb
+.breadcrumb {
+    // colors
+    --breadcrumb-link-color: var(--palette-black);
+    --breadcrumb-link-hover-color: var(--palette-black-60);
+    --breadcrumb-link-active-color: var(--palette-black-40);
+    --breadcrumb-separator-color: var(--palette-black-25);
+
+    // params
+    --breadcrumb-font-size: 14px;
+    --breadcrumb-line-height: var(--body-text-line);
+    --breadcrumb-item-space: 2rem;
+    --breadcrumb-separator: '\0002f';
+
+    // props
+    font-size: var(--breadcrumb-font-size);
+    line-height: var(--breadcrumb-line-height);
+
+    .breadcrumb-list {
+        display: flex;
+        align-items: center;
+    }
+    .breadcrumb-item {
+        display: flex;
+        align-items: center;
+    }
+    .breadcrumb-item:after {
+        content: var(--breadcrumb-separator);
+        color: var(--breadcrumb-separator-color);
+        margin-left: var(--breadcrumb-item-space);
+        margin-right: var(--breadcrumb-item-space);
+    }
+    .breadcrumb-item:last-child:after {
+        display: none;
+    }
+    .breadcrumb-item.active .breadcrumb-link {
+        color: var(--breadcrumb-link-active-color);
+        cursor: text;
+        text-decoration: none;
+    }
+    .breadcrumb-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--breadcrumb-link-color);
+    }
+    .breadcrumb-link:hover {
+        text-decoration: underline;
+        color: var(--breadcrumb-link-hover-color);
+    }
+}
+// Variants
+.breadcrumb-light {
+    --breadcrumb-link-color: var(--palette-white-80);
+    --breadcrumb-link-hover-color: var(--palette-white);
+    --breadcrumb-link-active-color: var(--palette-white-50);
+    --breadcrumb-separator-color: var(--palette-white-30);
+}
+.breadcrumb-bullet {
+    --breadcrumb-separator: '\2219';
+}
+.breadcrumb-path {
+    --breadcrumb-separator: '\0227B';
+}
+// Dark theme
+@include dark-theme {
+    .breadcrumb {
+        --breadcrumb-link-color: var(--palette-white-90);
+        --breadcrumb-link-hover-color: var(--palette-white);
+        --breadcrumb-link-active-color: var(--palette-white-50);
+        --breadcrumb-separator-color: var(--palette-white-30);
+    }
+}

@@ -1,0 +1,20 @@
+// =Navbar
+.navbar {
+    --navbar-height: 16rem;
+
+    .navbar-container {
+        display: flex;
+        height: var(--navbar-height);
+    }
+    .navbar-container > div {
+        display: flex;
+        align-items: center;
+    }
+    .brand,
+    .nav,
+    .nav-list,
+    .nav-item,
+    .nav-link {
+        height: 100%;
+    }
+}
